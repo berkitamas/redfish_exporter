@@ -106,10 +106,11 @@ func newRedfishClient(host string, username string, password string) (*gofish.AP
 	url := fmt.Sprintf("https://%s", host)
 
 	config := gofish.ClientConfig{
-		Endpoint: url,
-		Username: username,
-		Password: password,
-		Insecure: true,
+		Endpoint:              url,
+		Username:              username,
+		Password:              password,
+		Insecure:              true,
+		MaxConcurrentRequests: 15,
 	}
 	redfishClient, err := gofish.Connect(config)
 	if err != nil {
